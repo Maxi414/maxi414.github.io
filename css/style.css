@@ -421,3 +421,19 @@ footer span { color: var(--green-dim); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .card { opacity: 1; transform: none; }
 }
+
+/* ── Fondo de código del hero (llena la pantalla + reescritura) ── */
+.hero-code{ position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; padding:22px 34px;
+  -webkit-mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,#000 66%,transparent);
+  mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,#000 66%,transparent); }
+.hero-code-fill{ column-count:3; column-gap:52px; column-fill:auto; height:100%;
+  font-family:var(--font); font-size:13px; line-height:2.1; color:var(--green);
+  opacity:.13; white-space:nowrap; }
+.hero-code-line{ height:2.1em; overflow:hidden; }
+.hero-code .c-dim{ color:var(--text-dim); }
+.hero-code .c-cyan{ color:var(--cyan); }
+.hero-code .c-warn{ color:var(--amber); }
+.hero-code .cur{ color:var(--green); animation:blink .8s step-end infinite; }
+@media (max-width:900px){ .hero-code-fill{ column-count:2; } }
+@media (max-width:560px){ .hero-code-fill{ column-count:1; } }
+@media (prefers-reduced-motion:reduce){ .hero-code .cur{ animation:none; } }

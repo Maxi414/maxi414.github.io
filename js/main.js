@@ -109,7 +109,6 @@ const LABS = [
   { id: 'LAB-003', title: 'Cloud Security — AWS IAM', desc: 'Hardening de IAM, S3 y CloudTrail en AWS provisionado con Terraform, validado por CLI, ataques simulados y análisis estático (Checkov) en CI.', tags: ['AWS','Terraform','IAM','S3','CloudTrail','Checkov'], date: 'Jun 2026', status: 'done', url: 'https://github.com/Maxi414/aws-iam-s3-cloudtrail-hardening' },
   { id: 'LAB-004', title: 'SIEM Monitoring — Wazuh', desc: 'SIEM Wazuh sobre Docker monitoreando endpoints Linux y Windows en tiempo real: simulación de ataques, correlación de eventos, integración de Sysmon y una regla de detección propia mapeada a MITRE ATT&CK.', tags: ['Wazuh','SIEM','MITRE ATT&CK','Sysmon','Docker'], date: 'Jul 2026', status: 'done', url: 'https://github.com/Maxi414/wazuh-siem-detection-lab' },
   { id: 'LAB-005', title: 'Phishing Simulation — GoPhish', desc: 'Campaña de phishing de punta a punta: GoPhish detrás de un reverse proxy Nginx con TLS, OSINT pasivo con theHarvester, landing de captura de credenciales y una campaña completa contra una organización ficticia, del envío hasta las credenciales capturadas. Todo aislado en el lab.', tags: ['GoPhish','OSINT','Phishing','Nginx','Social Engineering'], date: 'Jul 2026', status: 'done', url: 'https://github.com/Maxi414/gophish-phishing-simulation-lab' },
-  { id: 'LAB-006', title: 'Docker Security — Trivy', desc: 'Análisis de seguridad en imágenes Docker con Trivy, hardening de contenedores y escaneo de vulnerabilidades CVE.', tags: ['Docker','Trivy','CVE','DevSecOps'], date: 'Q4 2026', status: 'planned', url: null },
 ];
 
 /* ═══════════════════════════════════════════════════════════
@@ -191,6 +190,7 @@ if (grid) {
   document.getElementById('labCount').textContent = LABS.length;
   const doneCount = LABS.filter(l => l.status === 'done').length;
   document.getElementById('pbDone').textContent = doneCount;
+  const pbTotalEl = document.getElementById('pbTotal'); if (pbTotalEl) pbTotalEl.textContent = LABS.length;
   const pbFill = document.getElementById('pbFill');
   if (pbFill) setTimeout(() => { pbFill.style.width = (doneCount / LABS.length * 100) + '%'; }, 300);
 
@@ -238,3 +238,47 @@ if (heroName && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) 
     }
   }, 2000);
 }
+
+/* ── Fondo de código del hero ── */
+(function () {
+  function initHeroCode() {
+    var fill = document.getElementById('codeFill');
+    if (!fill) return;
+    var POOL = [
+      '<span class="c-cyan">$</span> nmap -sV -T4 192.168.0.221',
+      '<span class="c-warn">[wazuh]</span> rule 100201 level 15 &rarr; COMPROMISO PROBABLE',
+      '<span class="c-cyan">$</span> theHarvester -d target -b crtsh,duckduckgo,otx',
+      '<span class="c-dim">[fim]</span> syscheck.diff: + backdoor_enabled=true',
+      '<span class="c-cyan">$</span> terraform plan -out=hardening.tfplan',
+      '<span class="c-dim">[checkov]</span> CKV_AWS_20 PASSED &middot; CKV_AWS_18 PASSED',
+      '<span class="c-cyan">$</span> hydra -l victima -P wordlist.txt ssh://192.168.0.221',
+      '<span class="c-warn">[sysmon]</span> EventID 11 &rarr; executable dropped &middot; T1105',
+      '<span class="c-cyan">$</span> docker compose -f single-node up -d',
+      '<span class="c-cyan">$</span> ssh -L 3333:127.0.0.1:3333 maxi141@192.168.0.221',
+      '<span class="c-dim">GET</span> /?rid=... 200 (nginx) &middot; X-Gophish-* stripped',
+      'MITRE ATT&amp;CK :: T1110 &middot; T1078 &middot; T1565.001',
+      '<span class="c-cyan">$</span> sudo systemctl status wazuh-agent',
+      '<span class="c-dim">[agent]</span> osbunker-linux &rarr; active',
+      '<span class="c-cyan">$</span> git commit -m "feat: publish LAB-005"',
+      '<span class="c-warn">[alert]</span> 5763 sshd brute force detected',
+      '<span class="c-cyan">$</span> sudo lynis audit system',
+      '<span class="c-dim">[lynis]</span> hardening index: 78/100',
+      '<span class="c-cyan">$</span> wazuh-logtest &lt; /var/log/auth.log',
+      '<span class="c-dim">[rule]</span> 5715 authentication success &middot; T1078'
+    ];
+    function plainOf(h){ var t=document.createElement('div'); t.innerHTML=h; return t.textContent; }
+    var TOTAL = 54, nodes = [];
+    for (var i=0;i<TOTAL;i++){ var d=document.createElement('div'); d.className='hero-code-line'; d.innerHTML=POOL[Math.floor(Math.random()*POOL.length)]; nodes.push(d); fill.appendChild(d); }
+    function retype(node){
+      var html=POOL[Math.floor(Math.random()*POOL.length)], plain=plainOf(html), c=0;
+      (function step(){
+        node.innerHTML = plain.slice(0,c).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '<span class="cur">_</span>';
+        if (c<plain.length){ c++; setTimeout(step,22); } else { node.innerHTML=html; }
+      })();
+    }
+    function loop(){ retype(nodes[Math.floor(Math.random()*nodes.length)]); setTimeout(loop, 700+Math.random()*600); }
+    setTimeout(loop,300); setTimeout(loop,800); setTimeout(loop,1300);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initHeroCode);
+  else initHeroCode();
+})();

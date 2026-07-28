@@ -83,6 +83,8 @@
     <!-- ═══ HERO ═══════════════════════════════════════════ -->
     <section id="hero" aria-label="Presentación">
       <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-code" aria-hidden="true"><div class="hero-code-fill" id="codeFill"></div></div>
+      <div class="hero-typer" id="heroTyper" aria-hidden="true"></div>
       <div class="corner corner-tl" aria-hidden="true"></div>
       <div class="corner corner-tr" aria-hidden="true"></div>
       <div class="corner corner-bl" aria-hidden="true"></div>
@@ -231,11 +233,11 @@
         <div class="progress-banner">
           <div class="progress-banner-top">
             <span class="pb-prompt">$ ./roadmap --status</span>
-            <span class="pb-count"><span id="pbDone">0</span>/6</span>
+            <span class="pb-count"><span id="pbDone">0</span>/<span id="pbTotal">0</span> ✓</span>
           </div>
           <p class="progress-banner-text">
-            Serie de 6 laboratorios en desarrollo mientras curso la certificación
-            <span class="pb-highlight">CompTIA Security+</span>.
+            Serie de laboratorios completada. Próximo objetivo: la certificación
+            <span class="pb-highlight">CompTIA Security+ (SY0-701)</span>.
           </p>
           <div class="progress-bar-track" role="progressbar" aria-label="Progreso del roadmap">
             <div class="progress-bar-fill" id="pbFill"></div>
