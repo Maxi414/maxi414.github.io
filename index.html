@@ -4,25 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- ─── SECURITY ────────────────────────────────────────────
+       GitHub Pages no permite headers propios, así que la CSP va por meta.
+       Todo es self-hosted: sin CDNs, sin fuentes externas, sin trackers. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <!-- ─── SEO ─────────────────────────────────────────────── -->
-  <title>Máximo Bonarrico — SOC & Blue Team | Cybersecurity Student</title>
-  <meta name="description" content="Portfolio de Máximo Bonarrico, estudiante de ciberseguridad enfocado en seguridad defensiva, Linux, redes y cloud. Labs prácticos, certificaciones y proyectos en GitHub." />
+  <title>Máximo Bonarrico | SOC Analyst Trainee · Blue Team · Cloud Security</title>
+  <meta name="description" content="Portfolio de Máximo Bonarrico: estudiante de Gestión de TI (UADE) enfocado en SOC, Blue Team y Cloud Security. Labs documentados de Wazuh SIEM, hardening de Linux, AWS con Terraform y phishing simulation." />
   <meta name="author" content="Máximo Bonarrico" />
-  <meta name="keywords" content="ciberseguridad, cybersecurity, defensive security, Linux, redes, cloud, AWS, SIEM, Wazuh, Nmap, CompTIA Security+, SOC analyst, blue team" />
   <link rel="canonical" href="https://maxi414.github.io/" />
 
-  <!-- Open Graph (LinkedIn / Facebook) -->
+  <!-- Open Graph (LinkedIn / WhatsApp / Facebook) -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Máximo Bonarrico — SOC & Blue Team | Cybersecurity Student" />
-  <meta property="og:description" content="Seguridad defensiva, Linux, redes y cloud. Labs prácticos y certificaciones en curso." />
+  <meta property="og:title" content="Máximo Bonarrico | SOC Analyst Trainee · Blue Team · Cloud Security" />
+  <meta property="og:description" content="Labs documentados de detección (Wazuh SIEM, Sysmon, MITRE ATT&CK), hardening de Linux y seguridad en AWS con Terraform." />
   <meta property="og:url" content="https://maxi414.github.io/" />
   <meta property="og:image" content="https://maxi414.github.io/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="es_AR" />
+  <meta property="og:locale:alternate" content="en_US" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Máximo Bonarrico — SOC & Blue Team | Cybersecurity Student" />
-  <meta name="twitter:description" content="Seguridad defensiva, Linux, redes y cloud. Labs prácticos y certificaciones en curso." />
+  <meta name="twitter:title" content="Máximo Bonarrico | SOC Analyst Trainee · Blue Team · Cloud Security" />
+  <meta name="twitter:description" content="Labs documentados de detección (Wazuh SIEM, Sysmon, MITRE ATT&CK), hardening de Linux y seguridad en AWS con Terraform." />
   <meta name="twitter:image" content="https://maxi414.github.io/assets/og-image.png" />
 
   <meta name="theme-color" content="#080c0e" />
@@ -33,58 +42,63 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
-  <!-- ─── FONTS ───────────────────────────────────────────── -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- ─── FONT + STYLES ───────────────────────────────────── -->
+  <link rel="preload" href="assets/fonts/fira-code-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/style.css?v=2" />
 
-  <!-- ─── STYLES ──────────────────────────────────────────── -->
-  <link rel="stylesheet" href="css/style.css" />
-
-  <!-- ─── STRUCTURED DATA (JSON-LD) ───────────────────────── -->
+  <!-- ─── STRUCTURED DATA (JSON-LD, no se ejecuta) ────────── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Máximo Bonarrico",
     "url": "https://maxi414.github.io/",
-    "jobTitle": "Cybersecurity Student",
+    "image": "https://maxi414.github.io/assets/foto.jpg",
+    "jobTitle": "SOC Analyst Trainee",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Argentina de la Empresa (UADE)" },
     "address": { "@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR" },
     "sameAs": [
       "https://www.linkedin.com/in/bonarrico-maximo/",
       "https://github.com/Maxi414"
     ],
-    "knowsAbout": ["SOC", "Blue Team", "Threat Detection", "SIEM", "Wazuh", "MITRE ATT&CK", "Defensive Security", "Linux", "Networking", "Cloud Security", "AWS"]
+    "knowsAbout": ["Security Operations", "Blue Team", "Threat Detection", "SIEM", "Wazuh", "Sysmon", "MITRE ATT&CK", "Linux Hardening", "AWS Security", "Terraform", "Networking"]
   }
   </script>
 </head>
 <body>
 
+  <a class="skip-link" href="#labs" data-i18n="skip">Saltar a los labs</a>
+
   <!-- ═══ TOPBAR ═══════════════════════════════════════════ -->
   <header class="topbar">
-    <div class="topbar-left">
+    <div class="topbar-left" aria-hidden="true">
       <span class="topbar-dot dot-red"></span>
       <span class="topbar-dot dot-yellow"></span>
       <span class="topbar-dot dot-green"></span>
       <span class="topbar-path">~/portfolio/maximo-bonarrico</span>
     </div>
-    <nav class="topbar-nav" aria-label="Navegación principal">
+    <nav class="topbar-nav" aria-label="Main" data-i18n-aria="navLabel">
       <a href="#hero">~</a>
+      <a href="#labs">labs/</a>
       <a href="#about">about.sh</a>
       <a href="#education">edu/</a>
-      <a href="#labs">labs/</a>
       <a href="#contact">contact.sh</a>
     </nav>
-    <span id="clock" aria-hidden="true"></span>
+    <div class="topbar-right">
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <span id="clock" aria-hidden="true"></span>
+    </div>
   </header>
 
   <main>
 
     <!-- ═══ HERO ═══════════════════════════════════════════ -->
-    <section id="hero" aria-label="Presentación">
+    <section id="hero" aria-labelledby="hero-name">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-code" aria-hidden="true"><div class="hero-code-fill" id="codeFill"></div></div>
-      <div class="hero-typer" id="heroTyper" aria-hidden="true"></div>
       <div class="corner corner-tl" aria-hidden="true"></div>
       <div class="corner corner-tr" aria-hidden="true"></div>
       <div class="corner corner-bl" aria-hidden="true"></div>
@@ -98,34 +112,79 @@
               <span class="avatar-dot" aria-hidden="true"></span>
               <span class="avatar-dot" aria-hidden="true"></span>
               <span class="avatar-dot" aria-hidden="true"></span>
-              <img src="assets/foto.jpg" alt="Foto de Máximo Bonarrico" width="180" height="180" />
+              <img src="assets/foto.jpg" alt="Foto de Máximo Bonarrico" data-i18n-alt="photoAlt" width="180" height="180" />
               <span class="avatar-scanline" aria-hidden="true"></span>
             </div>
-            <span class="avatar-status">ONLINE</span>
+            <span class="avatar-status" data-i18n="status">DISPONIBLE</span>
           </div>
 
           <div class="hero-text">
-            <p class="hero-prompt"><span>root@terminal</span>:~$ whoami</p>
-            <h1 class="hero-name">Máximo Bonarrico<span class="cursor-blink" aria-hidden="true">_</span></h1>
+            <p class="hero-prompt"><span class="hp-user">maxi@soc</span>:<span class="hp-path">~</span>$ whoami</p>
+            <h1 class="hero-name" id="hero-name">Máximo Bonarrico<span class="cursor-blink" aria-hidden="true">_</span></h1>
             <p class="hero-title">
-              Cybersecurity Student
+              <span data-i18n="role">Analista SOC Trainee</span>
               <span class="sep" aria-hidden="true">//</span>
-              SOC &amp; Blue Team
+              Blue Team
               <span class="sep" aria-hidden="true">//</span>
-              Defensive Security
+              Cloud Security
             </p>
-            <div class="hero-badges">
-              <span class="badge">Linux</span>
-              <span class="badge">Networking</span>
-              <span class="badge">Cloud</span>
-              <span class="badge">Python</span>
-              <span class="badge">Bash</span>
-              <span class="badge">Cybersecurity</span>
-              <span class="badge">SIEM</span>
-              <span class="badge">Wazuh</span>
-              <span class="badge">MITRE ATT&amp;CK</span>
+            <p class="hero-pitch" data-i18n="pitch">Estudiante de Gestión de TI en el último cuatrimestre. Armo labs de detección, hardening y seguridad en AWS, y los documento de punta a punta en GitHub.</p>
+            <div class="hero-actions">
+              <a href="#labs" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h12v2H3v-2z"/></svg>
+                <span data-i18n="ctaLabs">Ver labs</span>
+              </a>
+              <a href="assets/CV_Bonarrico_Maximo.pdf" download class="btn btn-ghost">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span data-i18n="ctaCv">Descargar CV</span>
+              </a>
+              <a href="https://www.linkedin.com/in/bonarrico-maximo/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                LinkedIn
+              </a>
             </div>
+            <ul class="hero-badges" aria-label="Stack">
+              <li class="badge">Wazuh</li>
+              <li class="badge">Sysmon</li>
+              <li class="badge">MITRE ATT&amp;CK</li>
+              <li class="badge">Linux</li>
+              <li class="badge">AWS</li>
+              <li class="badge">Terraform</li>
+              <li class="badge">Docker</li>
+              <li class="badge">Python</li>
+            </ul>
           </div>
+        </div>
+      </div>
+
+      <a href="#labs" class="scroll-hint" aria-hidden="true" tabindex="-1">
+        <span>scroll</span>
+        <svg viewBox="0 0 24 24"><path d="M12 16l-6-6 1.4-1.4L12 13.2l4.6-4.6L18 10z"/></svg>
+      </a>
+    </section>
+
+    <!-- ═══ LABS ═══════════════════════════════════════════ -->
+    <div class="divider" aria-hidden="true">
+      <div class="divider-line"></div>
+      <span>[ section_01 ]</span>
+      <div class="divider-line right"></div>
+    </div>
+
+    <section id="labs" aria-labelledby="labs-title">
+      <div class="section">
+        <div class="labs-header">
+          <div>
+            <p class="section-label" data-i18n="labsLabel">Laboratorios</p>
+            <h2 class="section-title" id="labs-title" data-i18n="labsTitle">Labs documentados</h2>
+          </div>
+          <span class="labs-count"><span id="labCount">0</span> <span data-i18n="labsCount">reportes en GitHub</span></span>
+        </div>
+
+        <div class="labs-grid" id="labsGrid"></div>
+
+        <div class="roadmap reveal">
+          <p class="roadmap-cmd"><span class="t-prompt">$ </span><span class="t-cmd">./roadmap --next</span></p>
+          <ul class="roadmap-list" id="roadmapList"></ul>
         </div>
       </div>
     </section>
@@ -139,34 +198,40 @@
 
     <section id="about" aria-labelledby="about-title">
       <div class="section">
-        <p class="section-label">Sobre mí</p>
-        <h2 class="section-title" id="about-title">Perfil técnico</h2>
+        <p class="section-label" data-i18n="aboutLabel">Sobre mí</p>
+        <h2 class="section-title" id="about-title" data-i18n="aboutTitle">Perfil técnico</h2>
 
         <div class="about-grid">
-          <div class="terminal-block">
-            <div class="terminal-titlebar">
-              <span class="tb-dot tb-r"></span>
-              <span class="tb-dot tb-y"></span>
-              <span class="tb-dot tb-g"></span>
-              <span class="terminal-filename">bio.json</span>
+          <div class="about-side">
+            <div class="terminal-block reveal">
+              <div class="terminal-titlebar">
+                <span class="tb-dot tb-r"></span>
+                <span class="tb-dot tb-y"></span>
+                <span class="tb-dot tb-g"></span>
+                <span class="terminal-filename">bio.json</span>
+              </div>
+              <div class="terminal-body">
+                <p class="terminal-line"><span class="t-prompt">$ </span><span class="t-cmd">cat bio.json</span></p>
+                <div class="json" id="bioJson"></div>
+              </div>
             </div>
-            <div class="terminal-body">
-              <p class="terminal-line"><span class="t-prompt">$ </span><span class="t-cmd">cat bio.json</span></p>
-              <p class="terminal-line"><span class="t-key">"nombre"</span>: <span class="t-string">"Máximo Bonarrico"</span>,</p>
-              <p class="terminal-line"><span class="t-key">"rol"</span>: <span class="t-string">"Cybersecurity Student"</span>,</p>
-              <p class="terminal-line"><span class="t-key">"base"</span>: <span class="t-string">"Buenos Aires, AR"</span>,</p>
-              <p class="terminal-line"><span class="t-key">"foco"</span>: <span class="t-string">"SOC / Blue Team · Defensive Security"</span>,</p>
-              <p class="terminal-line"><span class="t-key">"descripción"</span>: <span class="t-string">"Estudiante</span></p>
-              <p class="terminal-line"><span class="t-string">&nbsp;&nbsp;enfocado en ciberseguridad</span></p>
-              <p class="terminal-line"><span class="t-string">&nbsp;&nbsp;defensiva, Linux, redes y cloud.</span></p>
-              <p class="terminal-line"><span class="t-string">&nbsp;&nbsp;Desarrollando labs y proyectos</span></p>
-              <p class="terminal-line"><span class="t-string">&nbsp;&nbsp;para mejorar mis skills."</span>,</p>
-              <p class="terminal-line"><span class="t-key">"disponible"</span>: <span class="t-val">true</span></p>
-              <p class="terminal-line"><span class="t-prompt">$ </span><span class="cursor-blink" aria-hidden="true">_</span></p>
+
+            <div class="terminal-block reveal">
+              <div class="terminal-titlebar">
+                <span class="tb-dot tb-r"></span>
+                <span class="tb-dot tb-y"></span>
+                <span class="tb-dot tb-g"></span>
+                <span class="terminal-filename">status.log</span>
+              </div>
+              <div class="terminal-body">
+                <p class="terminal-line"><span class="t-prompt">$ </span><span class="t-cmd">tail status.log</span></p>
+                <ul class="status-log" id="statusLog"></ul>
+                <p class="terminal-line"><span class="t-prompt">$ </span><span class="cursor-blink" aria-hidden="true">_</span></p>
+              </div>
             </div>
           </div>
 
-          <div class="terminal-block">
+          <div class="terminal-block reveal">
             <div class="terminal-titlebar">
               <span class="tb-dot tb-r"></span>
               <span class="tb-dot tb-y"></span>
@@ -191,21 +256,24 @@
 
     <section id="education" aria-labelledby="edu-title">
       <div class="section">
-        <p class="section-label">Formación</p>
-        <h2 class="section-title" id="edu-title">Academia y certificaciones</h2>
+        <p class="section-label" data-i18n="eduLabel">Formación</p>
+        <h2 class="section-title" id="edu-title" data-i18n="eduTitle">Academia y certificaciones</h2>
 
         <div class="edu-grid">
-          <div class="edu-panel">
+          <div class="edu-panel reveal">
             <h3 class="edu-panel-title">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-              Formación académica
+              <span data-i18n="eduAcademic">Formación académica</span>
             </h3>
-            <div id="eduList"></div>
+            <div id="eduBlock"></div>
+
+            <h3 class="edu-subtitle" data-i18n="eduProjects">Proyectos académicos</h3>
+            <div id="projectList"></div>
           </div>
-          <div class="edu-panel">
+          <div class="edu-panel reveal">
             <h3 class="edu-panel-title">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 14l-4-4 1.41-1.41L10 12.17l6.59-6.59L18 7l-8 8z"/></svg>
-              Certificaciones
+              <span data-i18n="eduCerts">Certificaciones</span>
             </h3>
             <div id="certList"></div>
           </div>
@@ -213,76 +281,43 @@
       </div>
     </section>
 
-    <!-- ═══ LABS ═══════════════════════════════════════════ -->
+    <!-- ═══ CONTACT ════════════════════════════════════════ -->
     <div class="divider" aria-hidden="true">
       <div class="divider-line"></div>
       <span>[ section_04 ]</span>
       <div class="divider-line right"></div>
     </div>
 
-    <section id="labs" aria-labelledby="labs-title">
-      <div class="section">
-        <div class="labs-header">
-          <div>
-            <p class="section-label">Laboratorios Técnicos</p>
-            <h2 class="section-title" id="labs-title" style="margin-bottom:0;">Roadmap de labs</h2>
-          </div>
-          <span class="labs-count"><span id="labCount">0</span> reportes disponibles</span>
-        </div>
-
-        <div class="progress-banner">
-          <div class="progress-banner-top">
-            <span class="pb-prompt">$ ./roadmap --status</span>
-            <span class="pb-count"><span id="pbDone">0</span>/<span id="pbTotal">0</span> ✓</span>
-          </div>
-          <p class="progress-banner-text">
-            Serie de laboratorios completada. Próximo objetivo: la certificación
-            <span class="pb-highlight">CompTIA Security+ (SY0-701)</span>.
-          </p>
-          <div class="progress-bar-track" role="progressbar" aria-label="Progreso del roadmap">
-            <div class="progress-bar-fill" id="pbFill"></div>
-          </div>
-        </div>
-
-        <div class="labs-grid" id="labsGrid"></div>
-      </div>
-    </section>
-
-    <!-- ═══ CONTACT ════════════════════════════════════════ -->
-    <div class="divider" aria-hidden="true">
-      <div class="divider-line"></div>
-      <span>[ section_05 ]</span>
-      <div class="divider-line right"></div>
-    </div>
-
     <section id="contact" aria-labelledby="contact-title">
       <div class="section">
         <p class="contact-icon" aria-hidden="true">&gt;_</p>
-        <h2 class="contact-title" id="contact-title">Contacto profesional</h2>
-        <p class="contact-sub">
-          Buenos Aires, Argentina · Disponible para oportunidades junior/trainee
-          en seguridad defensiva, SOC e infraestructura.
-        </p>
+        <h2 class="contact-title" id="contact-title" data-i18n="contactTitle">Hablemos</h2>
+        <p class="contact-sub" data-i18n="contactSub">Busco mi primera oportunidad como Analista SOC / Blue Team trainee, y estoy abierto a roles junior en cloud security e infraestructura. Buenos Aires, Argentina.</p>
 
         <div class="contact-actions">
           <a href="mailto:maxibonaa4@gmail.com" class="btn btn-primary">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            Enviar email
+            <span data-i18n="ctaEmail">Enviar email</span>
+          </a>
+          <a href="https://www.linkedin.com/in/bonarrico-maximo/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/Maxi414" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.6 0 0 3.6 0 8c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.5c-2 .4-2.5-.5-2.7-.9-.1-.2-.5-.9-.8-1.1-.3-.2-.7-.5 0-.5.6 0 1.1.6 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3.7 0 1.4.1 2 .3 1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.7 4 .3.3.5.7.5 1.5v2.2c0 .2.2.5.5.4A8 8 0 0016 8c0-4.4-3.6-8-8-8z"/></svg>
+            GitHub
           </a>
           <a href="assets/CV_Bonarrico_Maximo.pdf" download class="btn btn-ghost">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            Descargar CV
-          </a>
-          <a href="https://github.com/Maxi414" target="_blank" rel="noopener" class="btn btn-ghost">
-            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 0C3.6 0 0 3.6 0 8c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.5c-2 .4-2.5-.5-2.7-.9-.1-.2-.5-.9-.8-1.1-.3-.2-.7-.5 0-.5.6 0 1.1.6 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3.7 0 1.4.1 2 .3 1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.7 4 .3.3.5.7.5 1.5v2.2c0 .2.2.5.5.4A8 8 0 0016 8c0-4.4-3.6-8-8-8z"/></svg>
-            GitHub
+            <span data-i18n="ctaCv">Descargar CV</span>
           </a>
         </div>
 
         <div class="contact-links">
           <p class="contact-row"><span class="t-key">email</span><span class="t-comment">→ </span><a href="mailto:maxibonaa4@gmail.com">maxibonaa4@gmail.com</a></p>
-          <p class="contact-row"><span class="t-key">linkedin</span><span class="t-comment">→ </span><a href="https://www.linkedin.com/in/bonarrico-maximo/" target="_blank" rel="noopener">/in/bonarrico-maximo</a></p>
-          <p class="contact-row"><span class="t-key">github</span><span class="t-comment">→ </span><a href="https://github.com/Maxi414" target="_blank" rel="noopener">github.com/Maxi414</a></p>
+          <p class="contact-row"><span class="t-key">linkedin</span><span class="t-comment">→ </span><a href="https://www.linkedin.com/in/bonarrico-maximo/" target="_blank" rel="noopener noreferrer">/in/bonarrico-maximo</a></p>
+          <p class="contact-row"><span class="t-key">github</span><span class="t-comment">→ </span><a href="https://github.com/Maxi414" target="_blank" rel="noopener noreferrer">github.com/Maxi414</a></p>
+          <p class="contact-row"><span class="t-key">location</span><span class="t-comment">→ </span><span class="contact-plain">Buenos Aires, AR (UTC-3)</span></p>
         </div>
       </div>
     </section>
@@ -290,9 +325,9 @@
   </main>
 
   <footer>
-    <span>~/portfolio</span> &nbsp;·&nbsp; Construido con HTML, CSS &amp; Vanilla JS &nbsp;·&nbsp; <span id="year"></span>
+    <span>~/portfolio</span> &nbsp;·&nbsp; <span data-i18n="footer">HTML, CSS &amp; Vanilla JS · sin trackers ni dependencias</span> &nbsp;·&nbsp; <span id="year"></span>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>

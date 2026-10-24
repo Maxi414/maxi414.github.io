@@ -1,0 +1,7 @@
+# security.txt (RFC 9116)
+# Si encontrás un problema de seguridad en este sitio, escribime.
+# If you find a security issue on this site, please reach out.
+Contact: mailto:maxibonaa4@gmail.com
+Expires: 2027-10-24T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://maxi414.github.io/.well-known/security.txt
